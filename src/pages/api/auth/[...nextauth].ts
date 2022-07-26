@@ -1,7 +1,7 @@
 import NextAuth, { type NextAuthOptions } from 'next-auth';
-import DiscordProvider from 'next-auth/providers/discord';
+import CognitoProvider from 'next-auth/providers/cognito';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { env } from '../../../server/env.mjs';
+import { env } from '../../../../env.mjs';
 
 export const authOptions: NextAuthOptions = {
   callbacks: {
@@ -9,11 +9,12 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         session.user.id = user.id;
       }
+
       return session;
     },
   },
   providers: [
-    DiscordProvider({
+    CognitoProvider({
       clientId: env.DISCORD_CLIENT_ID,
       clientSecret: env.DISCORD_CLIENT_SECRET,
     }),

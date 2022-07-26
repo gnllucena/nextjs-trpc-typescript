@@ -1,4 +1,4 @@
-import { env } from './src/server/env.mjs';
+import { env } from './env.mjs';
 
 /**
  * @template {import('next').NextConfig} T
